@@ -6,52 +6,61 @@ class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext btx) {
     return MaterialApp(
-      title: "Text Widget",
+      title: "Button Widget",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Text Widget"),
+          title: Text("Button Widget"),
         ),
-        body: TextContent(),
+        body: ButtonDemo(),
       ),
     );
   }
 }
 
-class TextContent extends StatelessWidget {
+class ButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return RichTextDemo();
-  }
-}
-
-class TextDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Text(
-      "《定风波》苏轼\n莫听穿林打叶声，何妨吟啸且徐行。\n竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。",
-      style: TextStyle(fontSize: 20, color: Colors.orange),
-      textAlign: TextAlign.center,
+    return Center(
+      child: Column(
+        children: [
+          CustomButton(),
+          RaisedButton(
+            onPressed: () => print("有背景button"),
+            child: Text("RaisedButton"),
+          ),
+          FlatButton(
+            onPressed: () => print("Flat button"),
+            child: Text("FlatButton"),
+          ),
+          OutlineButton(
+            onPressed: () => print("outline button"),
+            child: Text("OutlineButton"),
+          ),
+          FloatingActionButton(
+            onPressed: () => print("floating action Button"),
+            child: Text("Flo"),
+          )
+        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+      ),
     );
   }
 }
 
-class RichTextDemo extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Text.rich(
-      TextSpan(
-        children:[
-          TextSpan(
-            text: "《定风波》",
-            style: TextStyle(
-              fontSize: 20
-            )
-          )
-        ] 
-      )
+    return RaisedButton(
+      onPressed: () => print("custom button"),
+      color: Colors.blueGrey,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Text(
+        "CustomButton",
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }
