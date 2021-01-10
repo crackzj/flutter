@@ -1,74 +1,57 @@
 import 'package:flutter/material.dart';
 
-void main(List<String> args) => runApp(MyApp());
+void main(List<String> args) => runApp(Myapp());
 
-class MyApp extends StatelessWidget {
+class Myapp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
+  Widget build(BuildContext btx) {
     return MaterialApp(
+      title: "Text Widget",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("卜夋"),
+          title: Text("Text Widget"),
         ),
-        body: HomeContent(),
+        body: TextContent(),
       ),
     );
   }
 }
 
-class HomeContent extends StatelessWidget {
+class TextContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Padding(
-        padding: EdgeInsets.all(10),
-        child: ListView(
-          children: [
-            ProductItem("Apple1", "macbook air 13`",
-                "https://cdn.jsdelivr.net/gh/crackzj/blogImg/blog20201223211137.jpeg"),
-            ProductItem("Apple2", "macbook pro 13`",
-                "https://cdn.jsdelivr.net/gh/crackzj/blogImg/blog20201223211137.jpeg"),
-            ProductItem("Apple3", "macbook pro 16`",
-                "https://cdn.jsdelivr.net/gh/crackzj/blogImg/blog20201223211137.jpeg")
-          ],
-        ));
+    return RichTextDemo();
   }
 }
 
-class ProductItem extends StatelessWidget {
-  final String title;
-  final String content;
-  final String url;
-  ProductItem(this.title, this.content, this.url);
+class TextDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-      decoration: BoxDecoration(border: Border.all()),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            title,
+    return Text(
+      "《定风波》苏轼\n莫听穿林打叶声，何妨吟啸且徐行。\n竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。",
+      style: TextStyle(fontSize: 20, color: Colors.orange),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
+class RichTextDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Text.rich(
+      TextSpan(
+        children:[
+          TextSpan(
+            text: "《定风波》",
             style: TextStyle(
-              fontSize: 24,
-            ),
-          ),
-          Text(
-            content,
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Image.network(url)
-        ],
-      ),
+              fontSize: 20
+            )
+          )
+        ] 
+      )
     );
   }
 }
